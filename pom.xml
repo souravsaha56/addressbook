@@ -491,5 +491,12 @@
             </reporting>
         </profile>
     </profiles>
+	<distributionManagement>
+    <repository>
+        <id>central</id>
+        <name>mt-frontend-ep-demo1-libs-release-local-releases</name>
+        <url>https://sourav1984.jfrog.io/artifactory/demo1-libs-release-local</url>
+    </repository>
+</distributionManagement>
 
 </project>
