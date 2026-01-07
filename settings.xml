@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.2.0 https://maven.apache.org/xsd/settings-1.2.0.xsd" xmlns="http://maven.apache.org/SETTINGS/1.2.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <servers>
+    <server>
+      <username>sourav.saha@teamcomputers.com</username>
+      <password>eyJ2ZXIiOiIyIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYiLCJraWQiOiJLOWRaU19wN2QzcGRuWWVwZk1jTHhqTm9YZGVvQXd6ZW82Y0labWF0WU40In0.eyJzdWIiOiJqZnJ0QDAxa2UxcWI0N3plbmI1MG55Z2FqOHoxenJoL3VzZXJzL3NvdXJhdi5zYWhhQHRlYW1jb21wdXRlcnMuY29tIiwic2NwIjoiYXBwbGllZC1wZXJtaXNzaW9ucy91c2VyIiwiYXVkIjoiamZydEAwMWtlMXFiNDd6ZW5iNTBueWdhajh6MXpyaCIsImlzcyI6ImpmcnRAMDFrZTFxYjQ3emVuYjUwbnlnYWo4ejF6cmgvdXNlcnMvc291cmF2LnNhaGFAdGVhbWNvbXB1dGVycy5jb20iLCJpYXQiOjE3Njc3Nzk3ODksImp0aSI6IjNlMzE1MjNhLTIzYjQtNGUyOC05OWY3LTViODU5NmEyOWNlNiIsInRpZCI6ImEwaGgxdmhuOWRnMjAifQ.kekHKoKht_8O0LziAw7skrOJu0OGeCRokYj1w8RYlqgiizbKjW5ZkmrqmSSfkWfHLDyvSnB5oXT1qCs2GBhUK3-u09kEM3SMya0EhLsqTJsa8NHYgY_-iRaJKRPFQMR_kKfW2GUurMgiYO2xfgEBMP02PYTKUpDOiAXGN2isCjvw_KdJHmSD1Uw27pLJVQkordU5X1qTcB3_TiMCH_ggJG4qb4bo_YyONKHydbWF-QKchvWI7imiE4Q0zIHWM_l4rK1SorJ4tLSPUi-GjEcVzugv6FLD_PJ5k54v4IYisTKx8ttuQPCTkPQN4_T_znT9WtSUx06oAfHgok12gFXkKA</password>
+      <id>central</id>
+    </server>
+    <server>
+      <username>sourav.saha@teamcomputers.com</username>
+      <password>eyJ2ZXIiOiIyIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYiLCJraWQiOiJLOWRaU19wN2QzcGRuWWVwZk1jTHhqTm9YZGVvQXd6ZW82Y0labWF0WU40In0.eyJzdWIiOiJqZnJ0QDAxa2UxcWI0N3plbmI1MG55Z2FqOHoxenJoL3VzZXJzL3NvdXJhdi5zYWhhQHRlYW1jb21wdXRlcnMuY29tIiwic2NwIjoiYXBwbGllZC1wZXJtaXNzaW9ucy91c2VyIiwiYXVkIjoiamZydEAwMWtlMXFiNDd6ZW5iNTBueWdhajh6MXpyaCIsImlzcyI6ImpmcnRAMDFrZTFxYjQ3emVuYjUwbnlnYWo4ejF6cmgvdXNlcnMvc291cmF2LnNhaGFAdGVhbWNvbXB1dGVycy5jb20iLCJpYXQiOjE3Njc3Nzk3ODksImp0aSI6IjVhZjQzM2E0LWExZDYtNDYxNi1iMTUxLTUwMWJkNjI0YzRkZCIsInRpZCI6ImEwaGgxdmhuOWRnMjAifQ.OCgEvDRY3RsRR0ANWGPeGFQplZz3ZAg8I5KC9gnNLykPiPjEZpylGE7KamWMmejy8FSvJCC7j2WNK3X8D_LHFEFPFn7ddXbTq5No4KDmGzhY2UiBaHNicG0iCFMxLtxgwxwmU_ayOJlHIpYaASCE1865cwmylkUVHKsPe3NI1HoJbwLJatdauRiLR8M8igr9IB3fd5cMsoeb8yceXA2EgXVd2OE0Z6bsSUgZIbx_If13T1S3BUZwpPHEyHBusg9U1yO6OWD6B968HP9HXm2SZs5jaasYNDGvtoDdQXsxvXofVIBgSW2RUgTZWfJdK11OUPwFj5BEieJM_fu1Fc9Mew</password>
+      <id>snapshots</id>
+    </server>
+  </servers>
+  <profiles>
+    <profile>
+      <repositories>
+        <repository>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+          <id>central</id>
+          <name>demo1-libs-release</name>
+          <url>https://sourav1984.jfrog.io/artifactory/demo1-libs-release</url>
+        </repository>
+        <repository>
+          <snapshots />
+          <id>snapshots</id>
+          <name>demo1-libs-snapshot</name>
+          <url>https://sourav1984.jfrog.io/artifactory/demo1-libs-snapshot</url>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+          <id>central</id>
+          <name>demo1-libs-release</name>
+          <url>https://sourav1984.jfrog.io/artifactory/demo1-libs-release</url>
+        </pluginRepository>
+        <pluginRepository>
+          <snapshots />
+          <id>snapshots</id>
+          <name>demo1-libs-snapshot</name>
+          <url>https://sourav1984.jfrog.io/artifactory/demo1-libs-snapshot</url>
+        </pluginRepository>
+      </pluginRepositories>
+      <id>artifactory</id>
+    </profile>
+  </profiles>
+  <activeProfiles>
+    <activeProfile>artifactory</activeProfile>
+  </activeProfiles>
+</settings>
