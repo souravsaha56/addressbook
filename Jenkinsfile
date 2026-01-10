@@ -1,30 +1,89 @@
 pipeline {
-   agent none
-   tools{
-//     jdk "myjava"
-        maven "mymaven"
-   }
+    agent any
+
+    tools {
+        maven 'mymaven'   // Change to your configured Maven name in Jenkins
+        jdk 'JDK-17'        // Change if you use a different JDK
+    }
+
+    environment {
+        MAVEN_OPTS = "-Xmx1024m"
+    }
+
     stages {
-        stage('Compile') { //prod
-        agent any
+
+        stage('Checkout') {
             steps {
-                echo "Compile the code"
-                sh "mvn compile"
+                checkout scm
             }
         }
-         stage('UnitTest') { //test
-         agent any
+
+        stage('Compile') {
             steps {
-                echo "Test the code"
-                sh "mvn test"
+                echo 'Compiling source code...'
+                sh 'mvn compile'
             }
         }
-         stage('Package') {//dev
-        agent {label 'linux_slave'}
+
+        stage('Code Review (PMD)') {
             steps {
-                echo "Package the code"
-                sh "mvn package"
+                echo 'Running static code analysis using PMD...'
+                sh 'mvn pmd:pmd'
+            }
+            post {
+                always {
+                    archiveArtifacts artifacts: '**/target/site/pmd.xml', allowEmptyArchive: true
+                }
+            }
+        }
+
+        stage('Unit Test') {
+            steps {
+                echo 'Executing unit tests...'
+                sh 'mvn test'
+            }
+            post {
+                always {
+                    junit '**/target/surefire-reports/*.xml'
+                }
+            }
+        }
+
+        stage('Code Coverage Analytics') {
+            steps {
+                echo 'Running code coverage analysis...'
+                sh 'mvn verify'
+            }
+            post {
+                always {
+                    archiveArtifacts artifacts: '**/target/site/**', allowEmptyArchive: true
+                }
+            }
+        }
+
+        stage('Package') {
+            steps {
+                echo 'Packaging the application...'
+                sh 'mvn package'
+            }
+            post {
+                success {
+                    archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
+                }
             }
         }
     }
+
+    post {
+        success {
+            echo 'Pipeline executed successfully ✅'
+        }
+        failure {
+            echo 'Pipeline failed ❌'
+        }
+        always {
+            cleanWs()
+        }
+    }
 }
+
