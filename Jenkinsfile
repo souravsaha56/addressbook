@@ -1,57 +1,30 @@
 pipeline {
-    agent any
-
-    tools {
-        maven '3.9.12 '   // use the exact Maven name from Jenkins
-    }
-
+   agent none
+   tools{
+//     jdk "myjava"
+        maven "mymaven"
+   }
     stages {
-
-        stage('Checkout') {
+        stage('Compile') { //prod
+        agent any
             steps {
-                checkout scm
+                echo "Compile the code"
+                sh "mvn compile"
             }
         }
-
-        stage('Compile') {
+         stage('UnitTest') { //test
+         agent any
             steps {
-                sh 'mvn compile'
+                echo "Test the code"
+                sh "mvn test"
             }
         }
-
-        stage('Code Review (PMD)') {
+         stage('Package') {//dev
+        agent {label 'linux_slave'}
             steps {
-                sh 'mvn pmd:pmd'
+                echo "Package the code"
+                sh "mvn package"
             }
-        }
-
-        stage('Unit Test') {
-            steps {
-                sh 'mvn test'
-            }
-            post {
-                always {
-                    junit '**/target/surefire-reports/*.xml'
-                }
-            }
-        }
-
-        stage('Code Coverage Analytics') {
-            steps {
-                sh 'mvn verify'
-            }
-        }
-
-        stage('Package') {
-            steps {
-                sh 'mvn package'
-            }
-        }
-    }
-
-    post {
-        always {
-            cleanWs()
         }
     }
 }
